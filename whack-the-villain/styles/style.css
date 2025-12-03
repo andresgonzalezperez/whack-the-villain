@@ -12,6 +12,13 @@ body {
   
 }
 
+#game-description {
+  font-size: 25px;
+  color: white;
+  font-weight: bold;
+  line-height: 1.5;
+}
+
 #game-container {
   display: none;
 }
