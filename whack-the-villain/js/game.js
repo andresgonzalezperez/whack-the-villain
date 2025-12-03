@@ -18,9 +18,9 @@ class Game {
 
     // Characters
     this.villains = [
-      new Villain("Villain1", "images/villain1.png"),
-      new Villain("Villain2", "images/villain2.png"),
-      new Villain("Villain3", "images/villain3.png"),
+      new Villain("Villain1", "whack-the-villain/images/villain1.png"),
+      new Villain("Villain2", "whack-the-villain/images/villain2.png"),
+      new Villain("Villain3", "whack-the-villain/images/villain3.png"),
     ];
     this.auntMay = new AuntMay();
 
@@ -30,11 +30,11 @@ class Game {
     // Music 
     this.musicBtn = document.getElementById("music-btn");
     this.musicIcon = document.getElementById("music-icon");
-    this.music = new Audio("assets/spiderman-theme.mp3");
+    this.music = new Audio("whack-the-villain/assets/spiderman-theme.mp3");
     this.music.loop = true;
     this.music.volume = 0.1; 
     this.isPlayingMusic = false;
-    this.webSound = new Audio("assets/spider-web-sound.wav"); // Add sound to the spider-web courser when its clicked
+    this.webSound = new Audio("whack-the-villain/assets/spider-web-sound.wav"); // Add sound to the spider-web courser when its clicked
     this.webSound.volume = 0.2;
 
     // Music button action
@@ -42,11 +42,11 @@ class Game {
       if (this.isPlayingMusic) {
         this.music.pause();
         this.isPlayingMusic = false;
-        this.musicIcon.src = "images/speaker-off.png";
+        this.musicIcon.src = "whack-the-villain/images/speaker-off.png";
       } else {
         this.music.play();
         this.isPlayingMusic = true;
-        this.musicIcon.src = "images/speaker-on.png";
+        this.musicIcon.src = "whack-the-villain/images/speaker-on.png";
       }
     });
     // High scores

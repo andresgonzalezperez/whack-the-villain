@@ -15,8 +15,8 @@ class Character {
 }
 
 class AuntMay extends Character {
-  constructor() {
-    super("Aunt May", "images/aunt-may.png", false);
+  constructor(name = "Aunt May", imagePath = "whack-the-villain/images/aunt-may.png") {
+    super(name, imagePath, false);
   }
 }
 
@@ -25,4 +25,3 @@ class Villain extends Character {
     super(name, imagePath, true);
   }
 }
-
