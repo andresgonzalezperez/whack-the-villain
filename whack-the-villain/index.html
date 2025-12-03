@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Whack the villan</title>
+  <title>Whack the Villain</title>
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
@@ -26,14 +26,25 @@
     <div id="game-end">
       <h1>Game Over</h1>
       <p>Your score: <span id="final-score"></span></p>
+
+      <div id="score-input">
+        <input id="player-name" type="text" placeholder="Enter your name" />
+        <button id="save-score-btn">Save Score</button>
+      </div>
+
+      <div id="high-scores-container">
+        <div id="high-scores">
+          <h3>High Scores</h3>
+          <ol id="scores-list"></ol>
+        </div>
+      </div>
+
       <button id="restart-btn">Restart</button>
     </div>
-
   </main>
 
- <script src="js/character.js"></script>
-<script src="js/game.js"></script>
-<script src="js/script.js"></script>
-
+  <script src="js/character.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

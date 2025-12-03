@@ -1,79 +1,88 @@
 # WHACK THE VILLAIN
 
-Linnk game 
+Link game 
 
-Logo
+![Logo](/whack-the-villain/images/logo_resized.png)
 
 ## Description
 Whack the Villain is a Spider-Man themed game where players must hit villains as they appear from random holes. The objective is to score as many points as possible by clicking on villains. However, if the player accidentally hits Aunt May, the game ends immediately. The final score is calculated based on the number of villains successfully hit before the game over.
 
 ## MVP
-- Start screen with game title and Start button.
-- Game screen with score display and grid of holes.
-- Villains appear randomly in holes with 80% probability.
-- Aunt May appears occasionally; clicking her ends the game.
-- Clicking villains increases the score.
-- Spider-web cursor active during gameplay.
-- Sound effect when hitting a character.
-- Background music toggle button.
-- Game Over screen with final score and Restart button.
+- Start screen with game title and start button  
+- Game screen with score counter and 2x2 grid of holes  
+- Random spawning of villains and Aunt May (80% villains, 20% Aunt May)  
+- Click interaction: villains increase score, Aunt May ends the game  
+- Game Over screen showing final score  
+- Input field to save player name and score  
+- High scores list (top 3) stored in localStorage  
+- Restart button to play again  
+- Background music toggle button with icon change  
 
 ## Backlog
-- Add more character types (heroes, neutrals).
-- Implement difficulty scaling (villains appear faster as score increases).
-- Add animations or visual effects when hitting villains.
-- Track high scores locally with player names.
-- Improve UI with dynamic backgrounds or parallax effects.
-- Add boss fights or special events after reaching certain scores.
+- Difficulty progression (spawn delay decreases as score increases)  
+- More characters (heroes and different villains)  
+- Responsive design for mobile devices  
+- Pause button functionality  
+- Animations for score increase or game over  
+- Leaderboard with more than 3 scores  
+- Option to clear high scores  
+- Different sound effects for each villain  
 
-## Data structure
-### Classes
-**Character**
-- `constructor(name, imagePath, isVillain)`
-- `createElement()`
+## Data structure  
+### Classes  
+- **Character**  
+  - Properties: `name`, `imagePath`, `isVillain`  
+  - Method: `createElement()` → returns `<img>` element  
 
-**AuntMay**
-- Extends `Character` with fixed name and image.
+- **AuntMay extends Character**  
+  - Constructor sets name, image, and `isVillain = false`  
 
-**Villain**
-- Extends `Character` with villain flag.
+- **Villain extends Character**  
+  - Constructor sets name, image, and `isVillain = true`  
 
-**Game**
-- Properties:
-  - `startScreen`, `container`, `endScreen`, `gameScreen`
-  - `startBtn`, `restartBtn`
-  - `scoreElement`, `finalScoreElement`
-  - `villains`, `auntMay`
-  - `holes`, `musicBtn`, `musicIcon`, `music`
-  - `score`, `interval`, `spawnDelay`, `isPlayingMusic`
-- Methods:
-  - `showScreen(target)`
-  - `prepareGrid(count)`
-  - `start()`
-  - `gameLoop()`
-  - `spawnCharacter()`
-  - `end()`
-  - `restart()`
+- **Game**  
+  - Properties: DOM elements, score, interval, spawnDelay, villains, AuntMay, holes, music, webSound, highScores  
+  - Methods:  
+    - `showScreen(target)` → switch between views  
+    - `prepareGrid(count)` → create holes  
+    - `start()` → initialize game  
+    - `gameLoop()` → main loop with interval  
+    - `spawnCharacter()` → spawn villain or Aunt May  
+    - `end()` → stop game and show Game Over screen  
+    - `saveScore()` → save score to localStorage  
+    - `renderHighScores()` → display top scores  
+    - `restart()` → reset to start screen  
 
-## States y States Transitions
-- **Start Screen** → shown at the beginning, player clicks "Start Game".
-- **Game Screen** → score is tracked, villains and Aunt May appear randomly.
-- **Game Over Screen** → triggered when Aunt May is clicked, shows final score and Restart button.
-- Transition flow:  
-  `Start Screen → Game Screen → Game Over Screen → Start Screen (via Restart)`
+---
 
-## Task
-1. Build HTML structure with three screens.
-2. Style screens with CSS (backgrounds, buttons, grid).
-3. Implement `Character` class and subclasses (`AuntMay`, `Villain`).
-4. Implement `Game` class with core logic (start, loop, spawn, end, restart).
-5. Add event listeners for Start and Restart buttons.
-6. Add sound effects and background music toggle.
-7. Test gameplay loop and scoring.
-8. Polish UI and animations.
+## States y States Transitions  
+- **Start Screen (`#game-intro`)**  
+  - Transition: click "Start Game" → Game Screen  
 
-## Links
-- **Slides**: Link
-- **Github repository**: Link
-- **Deployment**: Link
+- **Game Screen (`#game-container`)**  
+  - Transition: click Aunt May → Game Over  
+  - Transition: timer ends or player loses → Game Over  
 
+- **Game Over Screen (`#game-end`)**  
+  - Transition: click "Restart" → Start Screen  
+
+---
+
+## Task  
+Order of priority:  
+1. Build HTML structure with start, game, and end screens  
+2. Style screens with CSS (backgrounds, buttons, grid)  
+3. Implement `Character` and subclasses in `character.js`  
+4. Implement `Game` class logic in `game.js`  
+5. Add event listeners in `script.js`  
+6. Add scoring system and localStorage high scores  
+7. Integrate background music and sound effects  
+8. Polish UI (animations, cursor, responsive design)  
+9. Test and debug  
+
+---
+
+## Links  
+- Slides Link  
+- Github repository [Link](https://github.com/andresgonzalezperez/whack-the-villain.git)
+- Deployment Link  

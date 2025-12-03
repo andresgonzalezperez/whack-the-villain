@@ -32,8 +32,10 @@ class Game {
     this.musicIcon = document.getElementById("music-icon");
     this.music = new Audio("assets/spiderman-theme.mp3");
     this.music.loop = true;
-    this.music.volume = 0.2; 
+    this.music.volume = 0.1; 
     this.isPlayingMusic = false;
+    this.webSound = new Audio("assets/spider-web-sound.wav"); // Add sound to the spider-web courser when its clicked
+    this.webSound.volume = 0.2;
 
     // Music button action
     this.musicBtn.addEventListener("click", () => {
@@ -47,7 +49,19 @@ class Game {
         this.musicIcon.src = "images/speaker-on.png";
       }
     });
+    // High scores
+    this.playerNameInput = document.getElementById("player-name");
+    this.scoresList = document.getElementById("scores-list");
+    this.highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+    this.saveScoreBtn = document.getElementById("save-score-btn");
+    this.saveScoreBtn.addEventListener("click", () => {
+      this.saveScore();
+      this.renderHighScores();
+      this.playerNameInput.style.display = "none"; // Hide the name input
+      this.saveScoreBtn.style.display = "none"; // Hide the save button
+    });
   }
+/************************** METHODS **************************/
 
   // Show the screen we want
   showScreen(target) {
@@ -99,9 +113,8 @@ class Game {
     el.addEventListener("click", () => {
       if (clicked) return;
       clicked = true;
-      const webSound = new Audio("assets/spider-web-sound.wav"); // Add sound to the spider-web courser when its clicked
-      webSound.play();
-      webSound.volume = 0.2;
+      this.webSound.currentTime = 0; // Rewind to start so it can play again
+      this.webSound.play();
 
       if (character.isVillain) {
         this.score++;
@@ -128,11 +141,38 @@ class Game {
     this.finalScoreElement.textContent = this.score;
     this.showScreen(this.endScreen);
     this.container.classList.remove("game-active"); // Disable spider-web cursor
+    this.renderHighScores(); // Show the top 3 high scores
+  }
+
+  // Save score 
+  saveScore() {
+    const name = this.playerNameInput.value.trim() || "Anonymous";
+    const newScore = { name, score: this.score };
+
+    // Add the score and sorts in desc values the top 3
+    this.highScores.push(newScore);
+    this.highScores.sort((a, b) => b.score - a.score);
+    this.highScores = this.highScores.slice(0, 3);
+    // Save it in localStorage
+    localStorage.setItem("highScores", JSON.stringify(this.highScores));
+  }
+  // Show the score
+  renderHighScores() {
+    this.scoresList.innerHTML = "";
+    this.highScores.forEach(s => {
+      const li = document.createElement("li");
+      li.textContent = `${s.name}: ${s.score}`;
+      this.scoresList.appendChild(li);
+    });
   }
 
   // Restart
   restart() {
     this.showScreen(this.startScreen);
-  }
+    this.playerNameInput.value = ""; // clean name input
+    // Show again input and save button
+    this.playerNameInput.style.display = "block";
+    this.saveScoreBtn.style.display = "block";
+    }
 }
 
