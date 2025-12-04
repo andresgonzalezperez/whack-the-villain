@@ -1,6 +1,6 @@
 # WHACK THE VILLAIN
 
-Link game 
+[Link game](https://andresgonzalezperez.github.io/whack-the-villain/) 
 
 ![Logo](/whack-the-villain/images/logo_resized.png)
 
@@ -8,7 +8,7 @@ Link game
 Whack the Villain is a Spider-Man themed game where players must hit villains as they appear from random holes. The objective is to score as many points as possible by clicking on villains. However, if the player accidentally hits Aunt May, the game ends immediately. The final score is calculated based on the number of villains successfully hit before the game over.
 
 ## MVP
-- Start screen with game title and start button  
+- Start screen with game title, description and start button  
 - Game screen with score counter and 2x2 grid of holes  
 - Random spawning of villains and Aunt May (80% villains, 20% Aunt May)  
 - Click interaction: villains increase score, Aunt May ends the game  
@@ -83,6 +83,6 @@ Order of priority:
 ---
 
 ## Links  
-- Slides Link  
+- Slides [Link](https://docs.google.com/presentation/d/1pDeKV7S7vv7d2UulYse15h4Q8tahsnI-uA6uoSfPvUE/edit?usp=sharing)  
 - Github repository [Link](https://github.com/andresgonzalezperez/whack-the-villain.git)
-- Deployment Link  
+- Deployment [Link](https://andresgonzalezperez.github.io/whack-the-villain/)   

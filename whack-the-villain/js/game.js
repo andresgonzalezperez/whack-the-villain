@@ -63,7 +63,7 @@ class Game {
   }
 /************************** METHODS **************************/
 
-  // Show the screen we want
+  // Show the screen wanted
   showScreen(target) {
     this.startScreen.style.display = "none";
     this.container.style.display = "none";
